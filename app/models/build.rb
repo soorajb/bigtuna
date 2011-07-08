@@ -39,7 +39,7 @@ class Build < ActiveRecord::Base
   end
 
   def display_name
-    "Build ##{self.build_no} @ #{I18n.l(self.scheduled_at, :format => :long)}"
+    "Build ##{self.build_no} @ #{I18n.l(self.scheduled_at, :format => :long)} - #{self.status.to_s.humanize}"
   end
 
   def to_param
@@ -51,7 +51,7 @@ class Build < ActiveRecord::Base
   end
 
   def commit_data?
-    self.author && self.email && self.commit_message && self.committed_at && self.commit
+    self.author && self.commit_message && self.committed_at && self.commit
   end
 
   def finished?
