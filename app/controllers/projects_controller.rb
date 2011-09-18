@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  before_filter :basic_authentication
   before_filter :locate_project, :only => [:show, :build, :edit, :update, :remove, :destroy, :arrange, :feed]
   respond_to :js, :only => [:index, :show]
   
@@ -68,13 +67,5 @@ class ProjectsController < ApplicationController
   private
   def locate_project
     @project = Project.find(params[:id])
-  end
-  
-  protected
-
-  def basic_authentication
-   authenticate_or_request_with_http_basic do |username, password|
-     username == "deploy" && password == "deploy123"
-   end
   end
 end
