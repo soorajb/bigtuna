@@ -11,6 +11,9 @@
     %meta{:name => "description", :content => "description"}
   %body
     #main
+      %div#ad
+        checked with
+        = link_to("BigTuna", "http://bigtuna.appelier.com", :target => "_blank", :title => "BigTuna v#{BigTuna::VERSION}")
       #content
         = flash[:error]
         = flash[:notice]
